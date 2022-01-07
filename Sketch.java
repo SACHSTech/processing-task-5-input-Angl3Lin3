@@ -1,36 +1,111 @@
 import processing.core.PApplet;
 
 public class Sketch extends PApplet {
+
+  public float x = 100;
+  public float y = 290;
+  boolean upPressed = false;
+  boolean downPressed = false;
+  boolean leftPressed = false;
+  boolean rightPressed = false;
 	
-	
-  /**
-   * Called once at the beginning of execution, put your size all in this method
-   */
   public void settings() {
-	// put your size call here
     size(400, 400);
   }
 
-  /** 
-   * Called once at the beginning of execution.  Add initial set up
-   * values here i.e background, stroke, fill etc.
-   */
   public void setup() {
-    background(210, 255, 173);
+    background(97, 195, 237);
   }
 
-  /**
-   * Called repeatedly, anything drawn to the screen goes here
-   */
   public void draw() {
-	  
-	// sample code, delete this stuff
-    stroke(128);
-    line(150, 25, 270, 350);  
 
-    stroke(255);
-    line(50, 125, 70, 50);  
+    stroke(7, 133, 32);
+    fill(7, 133, 32);
+
+    rect(0, 300, 400, 100);
+	
+  	if (mousePressed && (mouseButton == LEFT)) {
+
+      stroke(225);
+      fill(225);
+
+      beginShape();
+      vertex(mouseX, mouseY + 30);
+      vertex(mouseX - 5, mouseY + 20);
+      vertex(mouseX, mouseY + 10);
+      vertex(mouseX + 5, mouseY + 20);
+      endShape();
+	  }
+
+    if (keyPressed) {
+      if (upPressed) {
+        y--;
+      }
+      if (downPressed) {
+        y++;
+      }
+      if (leftPressed) {
+        x--;
+      }
+      if (rightPressed) {
+        x++;
+      }
+      background(97, 195, 237);
+
+      stroke(7, 133, 32);
+      fill(7, 133, 32);
+  
+      rect(0, 300, 400, 100);
+    }
+
+    stroke(0);
+    fill(0);
+
+    square(x, y, 25);
+
+	}
+
+    public void mouseWheel() {
+  
+      background(7, 32, 82);
+
+      stroke(225);
+      fill(225);
+
+      ellipse(mouseX, mouseY, 100, 100);
+
+    }
+
+    public void keyPressed() {
+      if (keyCode == UP) {
+        upPressed = true;
+      }
+      else if (keyCode == DOWN) {
+        downPressed = true;
+      }
+      else if (keyCode == LEFT) {
+        leftPressed = true;
+      }
+      else if (keyCode == RIGHT) {
+        rightPressed = true;
+      }
+    }
+
+      public void keyReleased() {
+        if (keyCode == UP) {
+          upPressed = false;
+        }
+        else if (keyCode == DOWN) {
+          downPressed = false;
+        }
+        else if (keyCode == LEFT) {
+          leftPressed = false;
+        }
+        else if (keyCode == RIGHT) {
+          rightPressed = false;
+        }
+      }
+
   }
   
-  // define other methods down here.
-}
+ 
